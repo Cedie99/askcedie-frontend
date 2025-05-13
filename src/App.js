@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import SmartReviewer from './components/SmartReviewer';
 import IntroSection from './components/IntroSection';

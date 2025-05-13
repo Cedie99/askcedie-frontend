@@ -7,7 +7,7 @@ import Chatbot from './Chatbot';
 
 
 const SmartReviewer = () => {
-  const [filePath, setFilePath] = useState('');
+  //const [filePath, setFilePath] = useState('');
   const [extractedText, setExtractedText] = useState('');
   const [review, setReview] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -18,7 +18,7 @@ const SmartReviewer = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post('http://localhost:8000/api/upload', formData);
+      const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/upload`, formData);
       setFilePath(res.data.path);
       setExtractedText(res.data.extractedText);
     } catch (err) {
@@ -31,7 +31,7 @@ const SmartReviewer = () => {
   const handleReview = async () => {
     try {
       setLoading(true);
-      const res = await axios.post('http://localhost:8000/api/review', {
+      const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/review`, {
         content: extractedText,
       });
       setReview(res.data);
@@ -62,7 +62,7 @@ const parseMarkdown = (text) => {
 };
 
 
-    const handleDownload = () => {
+    /*const handleDownload = () => {
     const element = document.createElement("a");
     const file = new Blob([review?.message?.content || ''], { type: 'text/plain' });
     element.href = URL.createObjectURL(file);
@@ -70,16 +70,16 @@ const parseMarkdown = (text) => {
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
-    };
+    };*/
 
-const handlePDFDownload = () => {
+/*const handlePDFDownload = () => {
   const doc = new jsPDF();
   doc.setFontSize(12);
   const text = review?.choices?.[0]?.message?.content || 'No content available.';
   const lines = doc.splitTextToSize(text, 180);
   doc.text(lines, 10, 10);
   doc.save('review_output.pdf');
-};
+};*/
   return (
     <div className="smart-reviewer-container">
       <div className="smart-reviewer-card">
