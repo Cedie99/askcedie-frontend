@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import jsPDF from 'jspdf';
+//import jsPDF from 'jspdf';
 import CardSlider from './CardSlider'; // you'll create this component below
 import Chatbot from './Chatbot';
 
 
 
 const SmartReviewer = () => {
-  //const [filePath, setFilePath] = useState('');
+  const [ setFilePath] = useState('');
   const [extractedText, setExtractedText] = useState('');
   const [review, setReview] = useState(null);
   const [loading, setLoading] = useState(false);
