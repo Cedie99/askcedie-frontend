@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import axios from 'axios';
-//import jsPDF from 'jspdf';
+import jsPDF from 'jspdf';
 import CardSlider from './CardSlider'; // you'll create this component below
 import Chatbot from './Chatbot';
 
@@ -18,7 +18,7 @@ const SmartReviewer = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/upload`, formData);
+      const res = await axios.post('https://askcedie-backend-apdndkcbfkhbf4bs.canadacentral-01.azurewebsites.net/api/upload', formData);
       setFilePath(res.data.path);
       setExtractedText(res.data.extractedText);
     } catch (err) {
@@ -31,7 +31,7 @@ const SmartReviewer = () => {
   const handleReview = async () => {
     try {
       setLoading(true);
-      const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/review`, {
+      const res = await axios.post('https://askcedie-backend-apdndkcbfkhbf4bs.canadacentral-01.azurewebsites.net/api/upload', {
         content: extractedText,
       });
       setReview(res.data);
@@ -70,9 +70,9 @@ const parseMarkdown = (text) => {
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
-    };*/
+    };
 
-/*const handlePDFDownload = () => {
+const handlePDFDownload = () => {
   const doc = new jsPDF();
   doc.setFontSize(12);
   const text = review?.choices?.[0]?.message?.content || 'No content available.';
