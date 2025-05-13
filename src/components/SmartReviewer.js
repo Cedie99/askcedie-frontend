@@ -1,6 +1,6 @@
 import  { useState } from 'react';
 import axios from 'axios';
-import jsPDF from 'jspdf';
+//import jsPDF from 'jspdf';
 import CardSlider from './CardSlider'; // you'll create this component below
 import Chatbot from './Chatbot';
 
